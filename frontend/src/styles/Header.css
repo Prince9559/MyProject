@@ -1,0 +1,16 @@
+/* src/styles/Header.css */
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  background:#0b1420;
+  color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+.brand { font-weight:700; font-size:18px; }
+.header-right { display:flex; gap:12px; align-items:center; }
+.btn-logout {
+  background:#ef4444; color:white; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;
+}
+.header-user { opacity:0.9; }
