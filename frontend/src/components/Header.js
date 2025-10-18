@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -9,9 +8,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // clear local auth state + storage
     clearAuth();
-    // navigate to login
     navigate("/login");
   };
 
@@ -20,7 +17,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-left" onClick={goHome} style={{ cursor: "pointer" }}>
-        <div className="brand">Trading Intelligence</div>
+        <div className="brand">My App</div>
       </div>
       <div className="header-right">
         {user ? (

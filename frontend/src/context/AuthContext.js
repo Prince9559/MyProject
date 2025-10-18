@@ -1,4 +1,3 @@
-// src/context/AuthContext.js
 import React, { createContext, useEffect, useState } from "react";
 import API from "../services/api";
 
@@ -11,7 +10,6 @@ export function AuthProvider({ children }) {
     } catch { return null; }
   });
 
-  // on mount, if token exists but no user, try to fetch profile
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token && !user) {
@@ -21,7 +19,6 @@ export function AuthProvider({ children }) {
           localStorage.setItem("user", JSON.stringify(res.data));
         })
         .catch(() => {
-          // invalid token: clear
           localStorage.removeItem("token");
           localStorage.removeItem("user");
           setUser(null);
@@ -34,7 +31,6 @@ export function AuthProvider({ children }) {
     localStorage.setItem("user", JSON.stringify(userObj));
   };
 
-  // clear auth (used by logout)
   const clearAuth = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");

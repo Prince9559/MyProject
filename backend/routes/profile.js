@@ -1,11 +1,9 @@
-// routes/profile.js
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { body, validationResult } = require('express-validator');
 const { User } = require('../models');
 
-// GET /api/profile  (protected)
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findByPk(req.userId, { attributes: { exclude: ['password'] } });
@@ -17,7 +15,6 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// PUT /api/profile  (protected)
 router.put('/',
   auth,
   body('name').optional().isLength({ min: 2 }),

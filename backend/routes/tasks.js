@@ -1,4 +1,3 @@
-// routes/tasks.js
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
@@ -6,7 +5,6 @@ const { body, validationResult } = require('express-validator');
 const { Task } = require('../models');
 const { Op } = require('sequelize');
 
-// POST /api/tasks - create
 router.post('/',
   auth,
   body('title').isLength({ min: 1 }).withMessage('Title required'),
@@ -25,7 +23,6 @@ router.post('/',
   }
 );
 
-// GET /api/tasks - list (search + filter)
 router.get('/', auth, async (req, res) => {
   const { q, completed } = req.query;
   const where = { userId: req.userId };
@@ -40,7 +37,6 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// GET /api/tasks/:id
 router.get('/:id', auth, async (req, res) => {
   try {
     const task = await Task.findOne({ where: { id: req.params.id, userId: req.userId } });
@@ -52,7 +48,6 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
-// PUT /api/tasks/:id
 router.put('/:id', auth, async (req, res) => {
   try {
     const task = await Task.findOne({ where: { id: req.params.id, userId: req.userId } });
@@ -70,7 +65,6 @@ router.put('/:id', auth, async (req, res) => {
   }
 });
 
-// DELETE /api/tasks/:id
 router.delete('/:id', auth, async (req, res) => {
   try {
     const task = await Task.findOne({ where: { id: req.params.id, userId: req.userId } });

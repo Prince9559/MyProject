@@ -48,7 +48,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
       <aside className="sidebar">
         <h2 className="logo">MyApp</h2>
         <nav>
@@ -59,7 +58,6 @@ export default function Dashboard() {
         
       </aside>
 
-      {/* Main Content */}
       <main className="main-content">
         <header className="topbar">
           <h1>Welcome {profile?.name || "User"} 👋</h1>

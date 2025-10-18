@@ -1,4 +1,3 @@
-// routes/auth.js
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -8,7 +7,6 @@ const { User } = require('../models');
 const dotenv = require('dotenv');
 dotenv.config();
 
-// POST /api/auth/register
 router.post('/register',
   body('name').isLength({ min: 2 }).withMessage('Name too short'),
   body('email').isEmail().withMessage('Valid email required'),
@@ -37,7 +35,6 @@ router.post('/register',
   }
 );
 
-// POST /api/auth/login
 router.post('/login',
   body('email').isEmail().withMessage('Valid email required'),
   body('password').exists().withMessage('Password required'),
